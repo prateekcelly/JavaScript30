@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Console Tricks!</title>
+  </head>
+  <body>
+    <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+    <script>
+      const dogs = [
+        { name: "Snickers", age: 2 },
+        { name: "hugo", age: 8 },
+      ];
+
+      function makeGreen() {
+        const p = document.querySelector("p");
+        p.style.color = "#BADA55";
+        p.style.fontSize = "50px";
+      }
+
+      // Regular
+      console.log("Hello");
+
+      // Interpolated
+      console.log("Hello %s", "poop");
+
+      // Styled
+      console.log(
+        "%c Hello Modified",
+        "font-size: 30px; background: hotpink; text-shadow: 5px 5px 0 orange"
+      );
+
+      // warning!
+      console.warn("Hello Error");
+
+      // Error :|
+      console.error(
+        "%c Hello error",
+        "font-size: 30px; background: hotpink; text-shadow: 5px 5px 0 orange"
+      );
+
+      // Info
+      console.info("Hello Info");
+
+      // Testing
+      console.assert(1 === 2, "THIS. IS. WRONG.");
+
+      // clearing
+      console.clear();
+
+      // Viewing DOM Elements
+      console.log(document.querySelector("p"));
+      console.dir(document.querySelector("p"));
+
+      // Grouping together
+      dogs.forEach((dog) => {
+        console.groupCollapsed(`${dog.name}`);
+        console.log(`This is ${dog.name} name`);
+        console.log(`${dog.name} is ${dog.age} years old`);
+
+        console.groupEnd(`{dog.name}`);
+      });
+
+      // counting
+      console.count(`Sonic`);
+      console.count(`Sonic`);
+      console.count(`Sonic`);
+      console.count(`Boom`);
+      console.count(`Sonic`);
+      console.count(`Boom`);
+      console.count(`Boom`);
+
+      // timing
+      console.time("fetching data...");
+      fetch("https://api.github.com/users/prateekcelly")
+        .then((response) => response.json())
+        .then((response) => {
+          console.timeEnd("fetching data...");
+          console.log("Done!!! Here is the data");
+          console.log(response);
+        });
+    </script>
+  </body>
+</html>
